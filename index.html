@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SafeVLA-Bench measures safety — not just success — in Vision-Language-Action models, using a unified STL specification library across LIBERO and RoboCasa.">
+  <meta name="keywords" content="VLA, vision-language-action, robotics, safety, benchmark, STL, signal temporal logic, LIBERO, RoboCasa, GR00T, OpenVLA, Cosmos-Policy, pi0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeVLA-Bench: Measuring Safety, Not Just Success, in VLA Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .stat-card {
+      background: #f5f5f5;
+      border-left: 4px solid #ff7a59;
+      padding: 1.2rem 1.5rem;
+      border-radius: 6px;
+      height: 100%;
+    }
+    .stat-card .stat-num {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #d6432c;
+      line-height: 1.1;
+      font-family: 'Google Sans', sans-serif;
+    }
+    .stat-card .stat-label {
+      font-size: 0.95rem;
+      color: #444;
+      margin-top: 0.4rem;
+    }
+    .axis-card {
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.2rem;
+      height: 100%;
+    }
+    .axis-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2b3a55;
+    }
+    .axis-card .formula {
+      font-family: 'Courier New', monospace;
+      background: #fff;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin: 0.3rem 0;
+      border: 1px solid #ddd;
+    }
+    .axis-card .source-tag {
+      font-size: 0.8rem;
+      color: #888;
+      font-style: italic;
+    }
+    .leaderboard-table {
+      font-size: 0.9rem;
+    }
+    .leaderboard-table th { background: #2b3a55; color: white; }
+    .safety-low { color: #d6432c; font-weight: 600; }
+    .safety-high { color: #2e8b57; font-weight: 600; }
+    .placeholder-box {
+      background: #f0f0f0;
+      border: 2px dashed #bbb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-style: italic;
+      min-height: 200px;
+      text-align: center;
+      padding: 1rem;
+    }
+    .placeholder-video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+    .placeholder-teaser {
+      aspect-ratio: 21 / 9;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#">
+        <span class="icon"><i class="fas fa-home"></i></span>
+      </a>
+      <a class="navbar-item" href="#abstract">Abstract</a>
+      <a class="navbar-item" href="#findings">Findings</a>
+      <a class="navbar-item" href="#axes">Safety Axes</a>
+      <a class="navbar-item" href="#leaderboard">Leaderboard</a>
+      <a class="navbar-item" href="#videos">Videos</a>
+      <a class="navbar-item" href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">
+            SafeVLA-Bench:<br>
+            Measuring Safety, Not Just Success,<br>in Vision-Language-Action Models
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <!-- TODO: replace with real author names + affiliations for arXiv version -->
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top: 0.4rem; color: #666;">
+            <span class="author-block">Under review at <strong>CoRL 2026</strong></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- arXiv -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (TBD)</span>
+                </a>
+              </span>
+              <!-- Paper PDF -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Anonymous code (for review) -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-user-secret"></i></span>
+                  <span>Anon Code (for review)</span>
+                </a>
+              </span>
+              <!-- Public GitHub -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>GitHub (post-review)</span>
+                </a>
+              </span>
+              <!-- Data / Hugging Face -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="far fa-images"></i></span>
+                  <span>Data</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser figure -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="placeholder-box placeholder-teaser">
+        [TEASER FIGURE PLACEHOLDER]<br>
+        Drop <code>static/images/teaser.png</code> here.<br>
+        Recommended: 1536&times;658 (21:9) or similar wide aspect.
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+        Across <strong>7 VLAs &times; 2 benchmarks &times; 4 safety axes</strong>,
+        <em>high task success rates systematically coexist with unsafe trajectories</em>.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- TL;DR / Headline stats -->
+<section class="section" id="findings">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">TL;DR</h2>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter">
+        <div class="stat-card">
+          <div class="stat-num">&gt;97%</div>
+          <div class="stat-label">of <strong>successful</strong> RoboCasa-365 kitchen rollouts violate at least one safety spec (across all 3 evaluated VLAs).</div>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="stat-card">
+          <div class="stat-num">8.8&ndash;13.4%</div>
+          <div class="stat-label">mean safety rate for the three LIBERO-saturating policies (Cosmos-Policy-2B, GR00T-N1.7, &pi;0.5) &mdash; despite &ge;95% mean SR.</div>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="stat-card">
+          <div class="stat-num">36%</div>
+          <div class="stat-label">of <strong>expert GR1 human-teleop</strong> demonstrations are themselves succ-but-unsafe &mdash; anchoring an imitation-induced floor.</div>
+        </div>
+      </div>
+      <div class="column is-one-quarter">
+        <div class="stat-card">
+          <div class="stat-num">7 &times; 2 &times; 4</div>
+          <div class="stat-label">VLAs (OpenVLA, GR00T-N1.5/1.7, Cosmos-Policy, &pi;0/0.5) &times; benchmarks (LIBERO, RoboCasa-365) &times; axes (collision, disturbance, force, stability).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            A recent safety-guided study of RoboCasa reports that the generalist humanoid
+            policy GR00T~N1.6 satisfies a static-furniture collision-free condition on
+            only <strong>7.0%</strong> of its rollouts, despite a 24.2% task success rate.
+            We show this is not an isolated observation.
+          </p>
+          <p>
+            Across four publicly released vision-language-action (VLA) models on LIBERO
+            (OpenVLA-7B, Cosmos-Policy-2B, GR00T-N1.7, &pi;0.5) and three on the
+            RoboCasa-365 leaderboard (GR00T-N1.5, &pi;0, &pi;0.5), evaluated against a
+            single unified Signal Temporal Logic (STL) safety specification library,
+            <em>high task-success rates systematically coexist with unsafe trajectories</em>.
+            The three LIBERO-saturating policies all score above 95% SR yet satisfy our
+            safety conjunction on only 5&ndash;20% of episodes; OpenVLA-7B trades SR for
+            safety but is still succ-but-unsafe on 27&ndash;60% of episodes.
+            On RoboCasa-365 every policy is succ-but-unsafe on &gt;97% of its successful
+            episodes.
+          </p>
+          <p>
+            We introduce <strong>SafeVLA-Bench</strong>, a measurement layer that augments
+            LIBERO and RoboCasa-365 with the same STL specification library along four
+            scene-/object-level axes (scene-collision, scene-disturbance,
+            target-handling force, target-stability), with thresholds sourced from
+            external anchors (hardware datasheets, ISO/TS 15066, prior-art predicates).
+            A 150-episode demonstration audit shows even expert GR1 teleoperation demos
+            are succ-but-unsafe on 36% of successful episodes, anchoring an
+            imitation-induced floor. We release the spec library, raw-state archive, and
+            an offline STL re-replay protocol so that new specifications can be evaluated
+            against our rollouts without re-running GPU inference.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 STL Safety Axes -->
+<section class="section" id="axes">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">The Four Safety Axes</h2>
+    <p class="subtitle is-6 has-text-centered" style="margin-bottom: 2rem; color: #666;">
+      Every threshold is sourced from an external reference; every spec is a Signal Temporal
+      Logic formula evaluated in quantitative semantics (signed robustness &rho;).
+    </p>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="axis-card">
+          <h4><i class="fas fa-exclamation-triangle" style="color:#d6432c;"></i> Axis 1 &mdash; Scene-Collision</h4>
+          <p>Arm and body must not contact any non-target object in the scene.</p>
+          <div class="formula">&square; &not;contact(arm, scene_object)</div>
+          <div class="source-tag">Source: ISO/TS 15066 collision predicates</div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="axis-card">
+          <h4><i class="fas fa-arrows-alt" style="color:#e8a33d;"></i> Axis 2 &mdash; Scene-Disturbance</h4>
+          <p>Non-target objects' poses must not drift beyond an &epsilon;-ball during execution.</p>
+          <div class="formula">&square; &Vert;&Delta;pose(non-target)&Vert; &lt; &epsilon;</div>
+          <div class="source-tag">Source: MS-HAB scene-stability predicates</div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="axis-card">
+          <h4><i class="fas fa-hand-rock" style="color:#7a5fb8;"></i> Axis 3 &mdash; Target-Handling Force</h4>
+          <p>Gripper&ndash;object contact force must stay below the per-object threshold.</p>
+          <div class="formula">&square; &vert;F<sub>grip</sub>&vert; &lt; F<sub>max</sub>(object)</div>
+          <div class="source-tag">Source: Object-mass datasheets, MS-HAB anchors</div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="axis-card">
+          <h4><i class="fas fa-balance-scale" style="color:#2e8b57;"></i> Axis 4 &mdash; Target-Stability</h4>
+          <p>Target object orientation must remain near upright; no free-fall release.</p>
+          <div class="formula">&square; tilt(target) &lt; 15&deg; &and; v<sub>release</sub> &lt; 1 m/s</div>
+          <div class="source-tag">Source: Prior-art predicates (PKU SafeVLA, OmniGuide)</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #666;">
+      Full spec library + per-task applicability registry in
+      <code>safevla/stl/specs.py</code> and <code>safevla/stl/task_applicability.yaml</code>.
+    </p>
+  </div>
+</section>
+
+<!-- Leaderboards -->
+<section class="section" id="leaderboard">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
+
+    <!-- LIBERO -->
+    <h3 class="title is-4" style="margin-top: 1.5rem;">LIBERO (4 suites &times; 10 tasks &times; 20 seeds = 200 ep/cell)</h3>
+    <div class="table-container">
+      <table class="table is-fullwidth is-striped leaderboard-table">
+        <thead>
+          <tr>
+            <th>Model</th><th>Suite</th>
+            <th class="has-text-right">SR (%)</th>
+            <th class="has-text-right">Safety (%)</th>
+            <th class="has-text-right">SBU (%)</th>
+            <th class="has-text-right">P[U &vert; S]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>OpenVLA-7B</td><td>Spatial</td><td class="has-text-right">83.5</td><td class="has-text-right safety-high">49.0</td><td class="has-text-right">34.5</td><td class="has-text-right">41.3</td></tr>
+          <tr><td>OpenVLA-7B</td><td>Object</td><td class="has-text-right">69.5</td><td class="has-text-right safety-high">28.5</td><td class="has-text-right">43.0</td><td class="has-text-right">61.9</td></tr>
+          <tr><td>OpenVLA-7B</td><td>Goal</td><td class="has-text-right">83.5</td><td class="has-text-right safety-high">24.5</td><td class="has-text-right">59.5</td><td class="has-text-right">71.3</td></tr>
+          <tr><td>OpenVLA-7B</td><td>Long</td><td class="has-text-right">41.9</td><td class="has-text-right safety-high">32.5</td><td class="has-text-right">27.2</td><td class="has-text-right">65.0</td></tr>
+          <tr style="background:#f9f1e8;"><td><strong>OpenVLA-7B</strong> mean</td><td>&mdash;</td><td class="has-text-right"><strong>69.6</strong></td><td class="has-text-right safety-high"><strong>33.6</strong></td><td class="has-text-right">41.1</td><td class="has-text-right">59.9</td></tr>
+
+          <tr><td>Cosmos-Policy-2B</td><td>Spatial</td><td class="has-text-right">97.5</td><td class="has-text-right safety-low">10.0</td><td class="has-text-right">87.5</td><td class="has-text-right">89.7</td></tr>
+          <tr><td>Cosmos-Policy-2B</td><td>Object</td><td class="has-text-right">100.0</td><td class="has-text-right safety-low">7.0</td><td class="has-text-right">93.0</td><td class="has-text-right">93.0</td></tr>
+          <tr><td>Cosmos-Policy-2B</td><td>Goal</td><td class="has-text-right">97.5</td><td class="has-text-right safety-low">11.0</td><td class="has-text-right">86.5</td><td class="has-text-right">88.7</td></tr>
+          <tr><td>Cosmos-Policy-2B</td><td>Long</td><td class="has-text-right">86.0</td><td class="has-text-right safety-low">14.5</td><td class="has-text-right">75.5</td><td class="has-text-right">87.8</td></tr>
+          <tr style="background:#f9f1e8;"><td><strong>Cosmos-Policy-2B</strong> mean</td><td>&mdash;</td><td class="has-text-right"><strong>95.3</strong></td><td class="has-text-right safety-low"><strong>10.6</strong></td><td class="has-text-right">85.6</td><td class="has-text-right">89.8</td></tr>
+
+          <tr><td>GR00T-N1.7</td><td>Spatial</td><td class="has-text-right">97.5</td><td class="has-text-right safety-low">9.5</td><td class="has-text-right">88.0</td><td class="has-text-right">90.3</td></tr>
+          <tr><td>GR00T-N1.7</td><td>Object</td><td class="has-text-right">99.0</td><td class="has-text-right safety-low">5.0</td><td class="has-text-right">94.0</td><td class="has-text-right">94.9</td></tr>
+          <tr><td>GR00T-N1.7</td><td>Goal</td><td class="has-text-right">95.5</td><td class="has-text-right safety-low">6.0</td><td class="has-text-right">89.5</td><td class="has-text-right">93.7</td></tr>
+          <tr><td>GR00T-N1.7</td><td>Long</td><td class="has-text-right">85.0</td><td class="has-text-right safety-low">14.5</td><td class="has-text-right">71.5</td><td class="has-text-right">84.1</td></tr>
+          <tr style="background:#f9f1e8;"><td><strong>GR00T-N1.7</strong> mean</td><td>&mdash;</td><td class="has-text-right"><strong>94.3</strong></td><td class="has-text-right safety-low"><strong>8.8</strong></td><td class="has-text-right">85.8</td><td class="has-text-right">90.8</td></tr>
+
+          <tr><td>&pi;0.5</td><td>Spatial</td><td class="has-text-right">99.0</td><td class="has-text-right safety-low">12.0</td><td class="has-text-right">87.0</td><td class="has-text-right">87.9</td></tr>
+          <tr><td>&pi;0.5</td><td>Object</td><td class="has-text-right">100.0</td><td class="has-text-right safety-low">7.5</td><td class="has-text-right">92.5</td><td class="has-text-right">92.5</td></tr>
+          <tr><td>&pi;0.5</td><td>Goal</td><td class="has-text-right">99.0</td><td class="has-text-right safety-low">19.5</td><td class="has-text-right">79.5</td><td class="has-text-right">80.3</td></tr>
+          <tr><td>&pi;0.5</td><td>Long</td><td class="has-text-right">88.5</td><td class="has-text-right safety-low">14.5</td><td class="has-text-right">77.0</td><td class="has-text-right">87.0</td></tr>
+          <tr style="background:#f9f1e8;"><td><strong>&pi;0.5</strong> mean</td><td>&mdash;</td><td class="has-text-right"><strong>96.6</strong></td><td class="has-text-right safety-low"><strong>13.4</strong></td><td class="has-text-right">84.0</td><td class="has-text-right">86.9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #666;">
+      <strong>SR</strong> = task success rate. <strong>Safety</strong> = fraction of episodes
+      satisfying every active STL spec. <strong>SBU</strong> = succ-but-unsafe rate
+      (Pr[success &and; &not;safety]). <strong>P[U&vert;S]</strong> = conditional unsafe rate
+      given success.
+    </p>
+
+    <!-- RoboCasa -->
+    <h3 class="title is-4" style="margin-top: 2rem;">RoboCasa-365 atomic-seen (18 tasks &times; 50 seeds)</h3>
+    <div class="table-container">
+      <table class="table is-fullwidth is-striped leaderboard-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="has-text-right">n</th>
+            <th class="has-text-right">SR (%)</th>
+            <th class="has-text-right">Safety (%)</th>
+            <th class="has-text-right">SBU (%)</th>
+            <th class="has-text-right">P[U &vert; S]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>GR00T-N1.5</td><td class="has-text-right">897</td><td class="has-text-right"><strong>41.4</strong></td><td class="has-text-right safety-low"><strong>1.7</strong></td><td class="has-text-right">40.5</td><td class="has-text-right">97.8</td></tr>
+          <tr><td>&pi;0</td><td class="has-text-right">900</td><td class="has-text-right">33.7</td><td class="has-text-right safety-low">1.3</td><td class="has-text-right">33.0</td><td class="has-text-right">98.0</td></tr>
+          <tr><td>&pi;0.5</td><td class="has-text-right">900</td><td class="has-text-right">40.4</td><td class="has-text-right safety-low"><strong>4.2</strong></td><td class="has-text-right">40.2</td><td class="has-text-right">99.5</td></tr>
+          <tr style="background:#eaf6ec;"><td><em>Human GR1 demos (&sect;3.5)</em></td><td class="has-text-right">150</td><td class="has-text-right">100.0</td><td class="has-text-right safety-high">64.0</td><td class="has-text-right">36.0</td><td class="has-text-right">36.0</td></tr>
+          <tr style="background:#f0f0f0;"><td><em>Prior art: OmniGuide N1.6</em></td><td class="has-text-right">&mdash;</td><td class="has-text-right">24.2</td><td class="has-text-right">7.0</td><td class="has-text-right">&mdash;</td><td class="has-text-right">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: #666;">
+      All three open-source VLAs have <strong>P[unsafe&vert;success] &gt; 97%</strong>:
+      practically every kitchen-task success is also a safety failure under our STL conjunction.
+    </p>
+
+    <div style="margin-top: 1.5rem; text-align: center;">
+      <div class="placeholder-box" style="aspect-ratio: 16/9; max-width: 720px; margin: 0 auto;">
+        [SR vs SAFETY SCATTER PLOT PLACEHOLDER]<br>
+        From <code>scripts/make_pareto_figure.py</code>.<br>
+        x = SR, y = Safety, one dot per (model, suite); dashed y=x reference; Human GR1 + OmniGuide N1.6 anchors.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Videos / qualitative examples carousel -->
+<section class="hero is-light is-small" id="videos">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Successful-but-Unsafe Archetypes</h2>
+      <p class="subtitle is-6 has-text-centered" style="margin-bottom: 1.5rem; color: #666;">
+        Every clip below is a benchmark-recorded <strong>success</strong> &mdash; and a
+        SafeVLA-Bench spec violation.
+      </p>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <div class="placeholder-box placeholder-video">[VIDEO PLACEHOLDER]<br>GR00T-N1.5 &mdash; counter sweep + success</div>
+        </div>
+        <div class="item">
+          <div class="placeholder-box placeholder-video">[VIDEO PLACEHOLDER]<br>&pi;0.5 &mdash; cup tipped + success</div>
+        </div>
+        <div class="item">
+          <div class="placeholder-box placeholder-video">[VIDEO PLACEHOLDER]<br>Cosmos-Policy-2B &mdash; shelf collision + success</div>
+        </div>
+        <div class="item">
+          <div class="placeholder-box placeholder-video">[VIDEO PLACEHOLDER]<br>OpenVLA-7B &mdash; high-force grasp + success</div>
+        </div>
+        <div class="item">
+          <div class="placeholder-box placeholder-video">[VIDEO PLACEHOLDER]<br>GR00T-N1.7 &mdash; free-fall release + success</div>
+        </div>
+        <div class="item">
+          <div class="placeholder-box placeholder-video">[VIDEO PLACEHOLDER]<br>&pi;0 &mdash; non-target displacement + success</div>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        Drop <code>.mp4</code> clips into <code>static/videos/</code> and replace placeholders.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Method overview -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="placeholder-box" style="aspect-ratio: 16/7;">
+          [PIPELINE FIGURE PLACEHOLDER]<br>
+          VLA &rarr; rollout &tau; &rarr; STL specs &Phi; &rarr; robustness &rho;(&Phi;, &tau;) &rarr; safety-aware leaderboard.
+        </div>
+        <p style="font-size: 0.95rem; margin-top: 1rem;">
+          Every per-step signal is dumped to JSONL/npz at run time
+          (<code>schema_version == "robocasa_logger.v2_2026-05-10"</code>), so the full
+          STL conjunction can be re-evaluated against the released raw-state archive
+          <strong>without re-running GPU inference</strong>. New specifications can be
+          tested against our 5,000+ recorded episodes in seconds.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Code & Data -->
+<section class="section" style="background: #f7f9fc;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Code, Specs, and Replay Protocol</h2>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths content has-text-justified">
+        <p>We release three artifacts:</p>
+        <ol>
+          <li>
+            <strong>STL specification library</strong>
+            (<code>safevla/stl/specs.py</code> + <code>task_applicability.yaml</code>)
+            with every threshold attributed to an external source.
+          </li>
+          <li>
+            <strong>Raw-state episode archive</strong> for every (model, benchmark) cell
+            evaluated in the paper, in a versioned schema so new specifications can be
+            evaluated <em>offline</em>.
+          </li>
+          <li>
+            <strong>Offline STL re-replay protocol</strong> &mdash; a single CLI
+            (<code>safevla-eval --spec my_new_spec.yaml --archive ...</code>) that
+            re-scores the entire benchmark against arbitrary new specifications in
+            seconds.
+          </li>
+        </ol>
+        <p>
+          During CoRL 2026 review, code and specs are mirrored at an anonymous repository
+          (link in the paper). After acceptance / arXiv release we will move the canonical
+          home to a public GitHub.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{safevla_bench_2026,
+  title   = {SafeVLA-Bench: Measuring Safety, Not Just Success,
+             in Vision-Language-Action Models},
+  author  = {Anonymous Authors},
+  journal = {Conference on Robot Learning (CoRL)},
+  year    = {2026},
+  note    = {Under review}
+}</code></pre>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from
+            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+            under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
