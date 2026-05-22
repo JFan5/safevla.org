@@ -2,7 +2,7 @@
 
 Project page for **SafeVLA-Bench: Measuring Safety, Not Just Success, in Vision-Language-Action Models**.
 
-Live site: <https://safevla-bench.jialiangfan.com> *(after release)*
+Live site: <https://safevla.org>
 
 ## Local preview
 
