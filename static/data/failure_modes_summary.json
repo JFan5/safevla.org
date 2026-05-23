@@ -1,0 +1,171 @@
+{
+  "cosmos-policy-2b|libero_10": {
+    "model": "cosmos-policy-2b",
+    "suite": "libero_10",
+    "n_episodes": 200,
+    "n_success": 172,
+    "top3_modes": [
+      {
+        "mode": "non_target_dist",
+        "count": 120,
+        "pct": 60.0
+      },
+      {
+        "mode": "collision",
+        "count": 26,
+        "pct": 13.0
+      },
+      {
+        "mode": "dropping",
+        "count": 3,
+        "pct": 1.5
+      }
+    ]
+  },
+  "cosmos-policy-2b|libero_goal": {
+    "model": "cosmos-policy-2b",
+    "suite": "libero_goal",
+    "n_episodes": 200,
+    "n_success": 195,
+    "top3_modes": [
+      {
+        "mode": "non_target_dist",
+        "count": 25,
+        "pct": 12.5
+      },
+      {
+        "mode": "collision",
+        "count": 17,
+        "pct": 8.5
+      },
+      {
+        "mode": "dropping",
+        "count": 2,
+        "pct": 1.0
+      }
+    ]
+  },
+  "cosmos-policy-2b|libero_object": {
+    "model": "cosmos-policy-2b",
+    "suite": "libero_object",
+    "n_episodes": 200,
+    "n_success": 200,
+    "top3_modes": [
+      {
+        "mode": "collision",
+        "count": 8,
+        "pct": 4.0
+      },
+      {
+        "mode": "non_target_dist",
+        "count": 3,
+        "pct": 1.5
+      }
+    ]
+  },
+  "cosmos-policy-2b|libero_spatial": {
+    "model": "cosmos-policy-2b",
+    "suite": "libero_spatial",
+    "n_episodes": 203,
+    "n_success": 198,
+    "top3_modes": [
+      {
+        "mode": "non_target_dist",
+        "count": 21,
+        "pct": 10.3
+      },
+      {
+        "mode": "self_collision",
+        "count": 3,
+        "pct": 1.5
+      },
+      {
+        "mode": "collision",
+        "count": 2,
+        "pct": 1.0
+      }
+    ]
+  },
+  "openvla-7b|libero_10": {
+    "model": "openvla-7b",
+    "suite": "libero_10",
+    "n_episodes": 70,
+    "n_success": 22,
+    "top3_modes": [
+      {
+        "mode": "non_target_dist",
+        "count": 12,
+        "pct": 17.1
+      },
+      {
+        "mode": "collision",
+        "count": 5,
+        "pct": 7.1
+      },
+      {
+        "mode": "dropping",
+        "count": 2,
+        "pct": 2.9
+      }
+    ]
+  },
+  "openvla-7b|libero_goal": {
+    "model": "openvla-7b",
+    "suite": "libero_goal",
+    "n_episodes": 70,
+    "n_success": 61,
+    "top3_modes": [
+      {
+        "mode": "collision",
+        "count": 9,
+        "pct": 12.9
+      },
+      {
+        "mode": "non_target_dist",
+        "count": 2,
+        "pct": 2.9
+      },
+      {
+        "mode": "excess_velocity",
+        "count": 1,
+        "pct": 1.4
+      }
+    ]
+  },
+  "openvla-7b|libero_object": {
+    "model": "openvla-7b",
+    "suite": "libero_object",
+    "n_episodes": 70,
+    "n_success": 50,
+    "top3_modes": [
+      {
+        "mode": "self_collision",
+        "count": 8,
+        "pct": 11.4
+      },
+      {
+        "mode": "collision",
+        "count": 1,
+        "pct": 1.4
+      }
+    ]
+  },
+  "openvla-7b|libero_spatial": {
+    "model": "openvla-7b",
+    "suite": "libero_spatial",
+    "n_episodes": 70,
+    "n_success": 63,
+    "top3_modes": [
+      {
+        "mode": "self_collision",
+        "count": 5,
+        "pct": 7.1
+      },
+      {
+        "mode": "non_target_dist",
+        "count": 2,
+        "pct": 2.9
+      }
+    ]
+  }
+}
