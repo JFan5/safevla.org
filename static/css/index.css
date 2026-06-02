@@ -311,6 +311,74 @@ h3 {
   color: #9bd7c5;
 }
 
+.method-flow {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 34px;
+}
+
+.method-step {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.method-step span {
+  align-items: center;
+  background: rgba(34, 141, 130, 0.12);
+  border-radius: 999px;
+  color: var(--teal);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 780;
+  height: 30px;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 30px;
+}
+
+.method-step p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.method-details {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.method-detail {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.method-detail p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.method-detail ul {
+  color: var(--muted);
+  margin: 16px 0 0;
+  padding-left: 18px;
+}
+
+.method-detail li + li {
+  margin-top: 8px;
+}
+
+.method-detail strong {
+  color: var(--ink);
+}
+
 .metrics-grid {
   display: grid;
   gap: 18px;
@@ -607,6 +675,8 @@ th {
 
 @media (max-width: 960px) {
   .two-column,
+  .method-flow,
+  .method-details,
   .metrics-grid,
   .result-panels,
   .tables-grid,

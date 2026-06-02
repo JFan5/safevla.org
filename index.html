@@ -16,7 +16,7 @@
   <title>SafeVLA-Bench</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310231f'/%3E%3Cpath d='M18 33l8 8 17-20' fill='none' stroke='%23f4f1e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260602-constraints-copy">
+  <link rel="stylesheet" href="static/css/index.css?v=20260602-method">
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -114,19 +114,70 @@
       <div class="section-inner two-column">
         <div>
           <p class="section-kicker">Method</p>
-          <h2>A task-aware specification layer for manipulation safety.</h2>
+          <h2>From native rollouts to task-aware safety scores.</h2>
         </div>
         <div class="body-copy">
           <p>
-            SafeVLA-Bench groups safety into scene interaction, object handling, and execution. Its default scored library contains eight constraint families, including contact-force ceilings, bystander displacement, held-object tilt, stable grasp maintenance, joint torque limits, and self-collision.
+            SafeVLA-Bench is a post-hoc evaluation layer, not a new task protocol. Policies run under the original LIBERO and RoboCasa-365 setups, so native success rates remain comparable to the host benchmarks.
           </p>
           <p>
-            A tag-rule applicability registry activates a specification only when it has a valid physical referent and does not contradict the task objective. This prevents false positives such as penalizing drawer motion in a drawer-opening task or bottle tilt in a wine-rack insertion task.
+            The benchmark adds safety instrumentation, resolves which STL specifications are valid for each task, and reports safety metrics from the resulting trajectories.
           </p>
         </div>
       </div>
-      <div class="section-inner figure-wrap">
-        <img src="static/images/sbu_teaser_chart.png" alt="SafeVLA-Bench teaser chart showing success-safety gaps and SBU metrics">
+
+      <div class="section-inner method-flow" aria-label="SafeVLA-Bench method pipeline">
+        <article class="method-step">
+          <span>1</span>
+          <h3>Preserve Host Rollouts</h3>
+          <p>Run each VLA with the benchmark's native observations, actions, success predicate, seeds, and inference wrapper.</p>
+        </article>
+        <article class="method-step">
+          <span>2</span>
+          <h3>Instrument Safety Signals</h3>
+          <p>Log contact forces, object poses, bystander displacement, held-object motion, robot state, and self-contact indicators.</p>
+        </article>
+        <article class="method-step">
+          <span>3</span>
+          <h3>Resolve Task Applicability</h3>
+          <p>Use tag-rule logic to activate only specs with a valid physical referent and no conflict with the task objective.</p>
+        </article>
+        <article class="method-step">
+          <span>4</span>
+          <h3>Score STL Robustness</h3>
+          <p>Compute per-spec robustness, aggregate task-level safety, and separate unsafe success from ordinary task failure.</p>
+        </article>
+      </div>
+
+      <div class="section-inner method-details">
+        <article class="method-detail">
+          <h3>Safety Semantics</h3>
+          <p>Eight scored constraint families cover scene interaction, object handling, and robot execution.</p>
+          <ul>
+            <li>Contact-force ceilings for arm, target-object, and aggregate contacts.</li>
+            <li>Bystander displacement and held-object transport stability.</li>
+            <li>Stable grasp, joint torque limits, and self-collision freedom.</li>
+          </ul>
+        </article>
+        <article class="method-detail">
+          <h3>Task-aware Registry</h3>
+          <p>Each task receives benchmark signal tags, task-mechanism tags, and object-property tags.</p>
+          <ul>
+            <li>Drawer or door motion is not penalized when it is the task goal.</li>
+            <li>Large target tilt is disabled when the task itself requires extreme tilt.</li>
+            <li>Unavailable host signals produce N/A specs, not fake-safe scores.</li>
+          </ul>
+        </article>
+        <article class="method-detail">
+          <h3>Reported Metrics</h3>
+          <p>Each model-benchmark cell is summarized by four complementary numbers.</p>
+          <ul>
+            <li><strong>SR</strong>: native host benchmark success rate.</li>
+            <li><strong>Safety</strong>: fraction satisfying all applicable safety specs.</li>
+            <li><strong>SBU</strong>: successful rollouts that violate at least one spec.</li>
+            <li><strong>VSI</strong>: normalized worst-violation severity.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
@@ -138,6 +189,10 @@
           <p>
             SafeVLA-Bench evaluates modern VLA policies on LIBERO and RoboCasa-365 using native inference wrappers and fixed seeds across models.
           </p>
+        </div>
+
+        <div class="figure-wrap">
+          <img src="static/images/sbu_teaser_chart.png" alt="SafeVLA-Bench teaser chart showing success-safety gaps and SBU metrics">
         </div>
 
         <div class="result-panels">
