@@ -219,30 +219,44 @@
               <source src="static/videos/archetype_b_drop.mp4" type="video/mp4">
             </video>
             <h3>Archetype B: Object Drop</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Release speed / object drop <code>target_obj_speed_0.3mps</code>
+            </p>
           </article>
           <article class="video-card">
             <video controls muted playsinline preload="metadata">
               <source src="static/videos/archetype_c_distractor.mp4" type="video/mp4">
             </video>
             <h3>Archetype C: Distractor Disturbance</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Bystander displacement <code>non_target_max_disp_5mm</code>
+            </p>
           </article>
           <article class="video-card">
             <video controls muted playsinline preload="metadata">
               <source src="static/videos/archetype_v2_d_overpush_fridge.mp4" type="video/mp4">
             </video>
             <h3>Archetype D: Fridge Over-push</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Excessive contact force <code>max_contact_force_under_200N</code>
+            </p>
           </article>
         </div>
       </div>
     </section>
 
     <section id="citation" class="section-block citation-section">
-      <div class="section-inner two-column">
-        <div>
+      <div class="section-inner citation-inner">
+        <div class="citation-heading">
           <p class="section-kicker">Citation</p>
           <h2>BibTeX</h2>
         </div>
-        <pre class="bibtex-block"><code>@misc{fan2026safevlabench,
+        <div class="bibtex-panel">
+          <button class="copy-button" type="button" data-copy-target="bibtex-code">Copy</button>
+          <pre class="bibtex-block"><code id="bibtex-code">@misc{fan2026safevlabench,
   title        = {SafeVLA-Bench: A Benchmark for the Success--Safety Gap in Vision-Language-Action Models},
   author       = {Fan, Jialiang and Xu, Weizhe and Sokolsky, Oleg and Lee, Insup and Kong, Fanxin},
   year         = {2026},
@@ -250,6 +264,7 @@
   archivePrefix = {arXiv},
   url          = {https://arxiv.org/abs/2606.00773}
 }</code></pre>
+        </div>
       </div>
     </section>
   </main>
