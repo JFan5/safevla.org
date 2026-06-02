@@ -3,47 +3,262 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Project page for SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models.">
+  <meta name="description" content="SafeVLA-Bench is a benchmark for measuring the success-safety gap in vision-language-action manipulation policies.">
+  <meta name="theme-color" content="#f7fbf8">
   <meta property="og:title" content="SafeVLA-Bench">
   <meta property="og:description" content="A Benchmark for the Success-Safety Gap in Vision-Language-Action Models.">
+  <meta property="og:image" content="https://safevla.org/static/images/sbu_teaser_chart.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://safevla.org/">
+  <meta name="citation_title" content="SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models">
+  <meta name="citation_arxiv_id" content="2606.00773">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2606.00773">
   <title>SafeVLA-Bench</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-    body {
-      align-items: center;
-      background: #f7f8fa;
-      color: #20242c;
-      display: flex;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      justify-content: center;
-    }
-    main {
-      max-width: 560px;
-      padding: 32px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 28px;
-      font-weight: 650;
-      letter-spacing: 0;
-      line-height: 1.25;
-      margin: 0 0 16px;
-    }
-    p {
-      color: #5f6878;
-      font-size: 16px;
-      line-height: 1.55;
-      margin: 0;
-    }
-  </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310231f'/%3E%3Cpath d='M18 33l8 8 17-20' fill='none' stroke='%23f4f1e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
 </head>
 <body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="SafeVLA-Bench home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>SafeVLA-Bench</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+
+  <header id="top" class="hero-stage">
+    <div class="hero-content">
+      <p class="eyebrow">arXiv preprint 2606.00773</p>
+      <h1>SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models</h1>
+      <p class="hero-copy">
+        VLA benchmarks usually ask whether the robot finishes the task. SafeVLA-Bench also asks whether it did so safely: without excessive contact, bystander disturbance, unstable object handling, or robot self-contact.
+      </p>
+      <div class="hero-actions">
+        <a class="action-button primary" href="https://arxiv.org/abs/2606.00773">
+          <span class="button-mark" aria-hidden="true">arXiv</span>
+          <span>arXiv Paper</span>
+        </a>
+      </div>
+      <figure class="hero-diagram">
+        <img src="static/images/safevla_diagram.png" alt="SafeVLA-Bench overview diagram">
+      </figure>
+      <dl class="hero-stats" aria-label="Main project statistics">
+        <div>
+          <dt>13-15%</dt>
+          <dd>unsafe episodes remain in high-SR LIBERO baselines</dd>
+        </div>
+        <div>
+          <dt>36-56%</dt>
+          <dd>successful RoboCasa-365 rollouts violate active safety clauses</dd>
+        </div>
+        <div>
+          <dt>8</dt>
+          <dd>task-aware STL safety families</dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
   <main>
-    <h1>SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models</h1>
-    <p>Coming soon.</p>
+    <section id="overview" class="section-block">
+      <div class="section-inner two-column">
+        <div>
+          <p class="section-kicker">Overview</p>
+          <h2>Measure safety post hoc, without changing the host benchmark.</h2>
+        </div>
+        <div class="body-copy">
+          <p>
+            SafeVLA-Bench instruments simulator rollouts, extracts safety-relevant signals, and evaluates task-aware Signal Temporal Logic specifications after the rollout. Native success rates stay comparable to LIBERO and RoboCasa-365, while safety metrics expose unsafe behavior hidden by binary completion.
+          </p>
+          <p>
+            The benchmark reports each policy cell as SR, Safety, Succ-But-Unsafe (SBU), and Violation Severity Index (VSI), separating task completion from unsafe-success frequency and worst-violation severity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block light">
+      <div class="section-inner">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <div class="metric-icon" aria-hidden="true">SR</div>
+            <h3>Native SR</h3>
+            <p>The host benchmark's original task-completion rate. SafeVLA-Bench preserves rollout protocols, observations, actions, and success predicates.</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon warm" aria-hidden="true">SBU</div>
+            <h3>SBU</h3>
+            <p>Succ-But-Unsafe counts rollouts that complete the requested task while violating at least one active safety specification.</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon cool" aria-hidden="true">VSI</div>
+            <h3>VSI</h3>
+            <p>Violation Severity Index scores the normalized depth of the worst applicable violation, distinguishing mild contacts from severe failures.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section-block">
+      <div class="section-inner two-column">
+        <div>
+          <p class="section-kicker">Method</p>
+          <h2>A task-aware specification layer for manipulation safety.</h2>
+        </div>
+        <div class="body-copy">
+          <p>
+            SafeVLA-Bench groups safety into scene interaction, object handling, and execution. Its default scored library contains eight constraint families, including contact-force ceilings, bystander displacement, held-object tilt, stable grasp maintenance, joint torque limits, and self-collision.
+          </p>
+          <p>
+            A tag-rule applicability registry activates a specification only when it has a valid physical referent and does not contradict the task objective. This prevents false positives such as penalizing drawer motion in a drawer-opening task or bottle tilt in a wine-rack insertion task.
+          </p>
+        </div>
+      </div>
+      <div class="section-inner figure-wrap">
+        <img src="static/images/sbu_teaser_chart.png" alt="SafeVLA-Bench teaser chart showing success-safety gaps and SBU metrics">
+      </div>
+    </section>
+
+    <section id="results" class="section-block light">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="section-kicker">Results</p>
+          <h2>High task success does not imply safe execution.</h2>
+          <p>
+            SafeVLA-Bench evaluates modern VLA policies on LIBERO and RoboCasa-365 using native inference wrappers and fixed seeds across models.
+          </p>
+        </div>
+
+        <div class="result-panels">
+          <article class="result-panel">
+            <h3>LIBERO</h3>
+            <p>High-SR SFT baselines exceed 94% mean success but still leave 13-15% unsafe-episode rates. The best Safety row is not the highest-SR row.</p>
+          </article>
+          <article class="result-panel">
+            <h3>RoboCasa-365</h3>
+            <p>Across four policies, 36-56% of native successes violate at least one active safety clause, showing that unsafe success is systematic.</p>
+          </article>
+          <article class="result-panel">
+            <h3>Severity</h3>
+            <p>SBU and VSI disagree in useful ways: a model may have fewer unsafe successes but more severe worst violations across all rollouts.</p>
+          </article>
+        </div>
+
+        <div class="figure-wrap">
+          <img src="static/images/diagnostic_combo_paper.png" alt="Diagnostic figure comparing success, safety, and violation types across evaluated model cells">
+        </div>
+
+        <div class="tables-grid">
+          <div class="table-block">
+            <h3>LIBERO Aggregate</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Train</th>
+                  <th>Mean SR</th>
+                  <th>Mean Safety</th>
+                  <th>Mean SBU</th>
+                  <th>Mean VSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>OpenVLA-7B</td><td>SFT</td><td>69.1%</td><td>83.8%</td><td>5.8%</td><td>0.113</td></tr>
+                <tr><td>Cosmos-Policy-2B</td><td>SFT</td><td>95.3%</td><td>87.1%</td><td>11.0%</td><td>0.072</td></tr>
+                <tr><td>GR00T-N1.7</td><td>SFT</td><td>94.3%</td><td>85.1%</td><td>12.6%</td><td>0.077</td></tr>
+                <tr><td>pi0.5</td><td>SFT</td><td>96.6%</td><td>86.1%</td><td>12.8%</td><td>0.070</td></tr>
+                <tr><td>pi-RL-130</td><td>RL</td><td>92.4%</td><td>90.3%</td><td>8.0%</td><td>0.053</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-block">
+            <h3>RoboCasa-365 Atomic-Seen</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>SR</th>
+                  <th>Safety</th>
+                  <th>SBU</th>
+                  <th>VSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>pi0</td><td>32.4%</td><td>44.6%</td><td>12.2%</td><td>0.197</td></tr>
+                <tr><td>pi0.5</td><td>42.3%</td><td>55.7%</td><td>15.4%</td><td>0.113</td></tr>
+                <tr><td>GR00T-N1.5</td><td>47.2%</td><td>40.7%</td><td>26.3%</td><td>0.173</td></tr>
+                <tr><td>RLDX-1-FT-RC365</td><td>58.4%</td><td>54.1%</td><td>23.1%</td><td>0.132</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-inner">
+        <div class="section-heading compact">
+          <p class="section-kicker">Qualitative Examples</p>
+          <h2>Successful rollouts can still be unsafe.</h2>
+        </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/gr00t_pickplace_counter_to_cabinet_sbu.mp4" type="video/mp4">
+            </video>
+            <h3>GROOT-N1.5, RoboCasa-365, PickPlaceCounterToCabinet</h3>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/pi05_libero10_task1_sbu.mp4" type="video/mp4">
+            </video>
+            <h3>pi0.5, libero-10, task-1</h3>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/gr00t_close_fridge_sbu.mp4" type="video/mp4">
+            </video>
+            <h3>RoboCasa-365, CloseFridge, GROOT-N1.5</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section-block citation-section">
+      <div class="section-inner two-column">
+        <div>
+          <p class="section-kicker">Citation</p>
+          <h2>BibTeX</h2>
+        </div>
+        <pre class="bibtex-block"><code>@misc{fan2026safevlabench,
+  title        = {SafeVLA-Bench: A Benchmark for the Success--Safety Gap in Vision-Language-Action Models},
+  author       = {Fan, Jialiang and Xu, Weizhe and Sokolsky, Oleg and Lee, Insup and Kong, Fanxin},
+  year         = {2026},
+  eprint       = {2606.00773},
+  archivePrefix = {arXiv},
+  url          = {https://arxiv.org/abs/2606.00773}
+}</code></pre>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <span>SafeVLA-Bench</span>
+    <span>A Benchmark for the Success-Safety Gap in Vision-Language-Action Models</span>
+  </footer>
+
+  <script src="static/js/index.js"></script>
 </body>
 </html>
