@@ -327,8 +327,25 @@
   <footer class="site-footer">
     <span>SafeVLA-Bench</span>
     <span>A Benchmark for the Success-Safety Gap in Vision-Language-Action Models</span>
+    <span class="visit-counter" style="white-space:nowrap;font-variant-numeric:tabular-nums;">
+      <span id="visit-count">—</span> visits
+    </span>
   </footer>
 
   <script src="static/js/index.js?v=20260602-constraints-copy"></script>
+
+  <!-- GoatCounter: privacy-friendly, cookieless analytics -->
+  <script data-goatcounter="https://jialiangfan.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    // Populate the footer visit counter from GoatCounter's public counter endpoint.
+    fetch('https://jialiangfan.goatcounter.com/counter/TOTAL.json')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var el = document.getElementById('visit-count');
+        if (el && d && d.count) el.textContent = d.count;
+      })
+      .catch(function () { /* keep placeholder if endpoint is unavailable */ });
+  </script>
 </body>
 </html>
