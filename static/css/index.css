@@ -191,7 +191,7 @@ button:focus-visible {
 .hero-content {
   margin: 0 auto;
   max-width: var(--max);
-  padding: 80px 28px 48px;
+  padding: 56px 28px 40px;
 }
 
 .hero-content.compact {
@@ -226,12 +226,11 @@ button:focus-visible {
 
 h1 {
   font-family: var(--serif);
-  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.06;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
   margin: 0 auto;
-  max-width: 900px;
 }
 
 h1 em {
@@ -239,15 +238,15 @@ h1 em {
 }
 
 .hero-content.compact h1 {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
 }
 
 .hero-copy {
   color: var(--muted);
-  font-size: 1.1rem;
-  line-height: 1.65;
-  margin: 24px auto 0;
-  max-width: 680px;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 18px auto 0;
+  max-width: 720px;
 }
 
 .hero-actions {
@@ -255,7 +254,7 @@ h1 em {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .action-button {
