@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="SafeVLA-Bench leaderboard: vision-language-action policies ranked by safety, not by task success rate.">
-  <meta name="theme-color" content="#f7fbf8">
+  <meta name="theme-color" content="#0d1524">
   <meta property="og:title" content="SafeVLA-Bench Leaderboard">
   <meta property="og:description" content="VLA policies ranked by safety. The highest success rate is not the safest policy.">
   <meta property="og:image" content="https://safevla.org/static/images/sbu_teaser_chart.png">
@@ -12,8 +12,10 @@
   <meta property="og:url" content="https://safevla.org/leaderboard.html">
   <title>Leaderboard &middot; SafeVLA-Bench</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310231f'/%3E%3Cpath d='M18 33l8 8 17-20' fill='none' stroke='%23f4f1e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260919-leaderboard">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="static/css/index.css?v=20260919-redesign">
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -35,20 +37,23 @@
     </div>
   </nav>
 
+  <header class="hero-stage">
+    <div class="hero-content compact">
+      <p class="eyebrow">Leaderboard</p>
+      <h1>Ranked by <em>safety</em>, not by success.</h1>
+      <p class="hero-copy">
+        Every entry is scored on the same rollouts with two questions, not one: did the policy
+        finish the task, and did it get there without excessive contact, bystander disturbance,
+        unstable object handling, or self-collision. Sorting by Safety rather than SR is
+        deliberate &mdash; the column next to it shows where each policy would place on a
+        success-only board, and the two orders do not agree.
+      </p>
+    </div>
+  </header>
+
   <main>
     <section class="section-block" id="board">
       <div class="section-inner">
-        <div class="section-heading">
-          <p class="section-kicker">Leaderboard</p>
-          <h2>Ranked by safety, not by success.</h2>
-          <p>
-            Every entry is scored on the same rollouts with two questions, not one: did the policy
-            finish the task, and did it get there without excessive contact, bystander disturbance,
-            unstable object handling, or self-collision. Sorting by Safety rather than SR is
-            deliberate &mdash; the column next to it shows where each policy would place on a
-            success-only board, and the two orders do not agree.
-          </p>
-        </div>
 
         <h3 class="board-title">RoboCasa-365 &middot; Atomic-Seen</h3>
         <!-- LEADERBOARD-ROBOCASA:START -->
