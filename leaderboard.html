@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SafeVLA-Bench leaderboard: vision-language-action policies ranked by safety, not by task success rate.">
+  <meta name="theme-color" content="#f7fbf8">
+  <meta property="og:title" content="SafeVLA-Bench Leaderboard">
+  <meta property="og:description" content="VLA policies ranked by safety. The highest success rate is not the safest policy.">
+  <meta property="og:image" content="https://safevla.org/static/images/sbu_teaser_chart.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://safevla.org/leaderboard.html">
+  <title>Leaderboard &middot; SafeVLA-Bench</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310231f'/%3E%3Cpath d='M18 33l8 8 17-20' fill='none' stroke='%23f4f1e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css?v=20260919-leaderboard">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="brand" href="index.html" aria-label="SafeVLA-Bench home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>SafeVLA-Bench</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#method">Method</a>
+      <a href="index.html#results">Results</a>
+      <a href="leaderboard.html" class="is-current">Leaderboard</a>
+      <a href="index.html#citation">Citation</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section-block" id="board">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="section-kicker">Leaderboard</p>
+          <h2>Ranked by safety, not by success.</h2>
+          <p>
+            Every entry is scored on the same rollouts with two questions, not one: did the policy
+            finish the task, and did it get there without excessive contact, bystander disturbance,
+            unstable object handling, or self-collision. Sorting by Safety rather than SR is
+            deliberate &mdash; the column next to it shows where each policy would place on a
+            success-only board, and the two orders do not agree.
+          </p>
+        </div>
+
+        <h3 class="board-title">RoboCasa-365 &middot; Atomic-Seen</h3>
+        <!-- LEADERBOARD-ROBOCASA:START -->
+<div class="table-block">
+<table>
+<thead><tr>
+<th>#</th>
+<th>Model</th>
+<th>Safety &uarr;</th>
+<th>SR &uarr;</th>
+<th>SBU &darr;</th>
+<th>VSI &darr;</th>
+<th>Episodes</th>
+</tr></thead>
+<tbody>
+<tr><td class="rank">&#129351;</td><td>RLDX-1-FT-RC365</td><td class="lead">53.0%</td><td>58.4%<span class="sr-rank">#2 by SR</span></td><td>24.1%</td><td>0.132</td><td class="dim">900</td></tr>
+<tr><td class="rank">&#129352;</td><td>&pi;<sub>0.5</sub></td><td class="lead">51.2%</td><td>42.3%<span class="sr-rank">#4 by SR</span></td><td>19.8%</td><td>0.114</td><td class="dim">900</td></tr>
+<tr><td class="rank">&#129353;</td><td>&pi;<sub>0</sub></td><td class="lead">44.0%</td><td>32.4%<span class="sr-rank">#6 by SR</span></td><td>12.4%</td><td>0.198</td><td class="dim">900</td></tr>
+<tr><td class="rank">4</td><td>GR00T-N1.5</td><td class="lead">40.7%</td><td>47.2%<span class="sr-rank">#3 by SR</span></td><td>26.3%</td><td>0.173</td><td class="dim">900</td></tr>
+<tr><td class="rank">5</td><td>PRTS</td><td class="lead">40.2%</td><td>42.1%<span class="sr-rank">#5 by SR</span></td><td>19.6%</td><td>0.268</td><td class="dim">900</td></tr>
+<tr><td class="rank">6</td><td>Xiaomi-Robotics-1</td><td class="lead">36.0%</td><td>59.6%<span class="sr-rank">#1 by SR</span></td><td>27.8%</td><td>0.338</td><td class="dim">900</td></tr>
+</tbody>
+</table>
+</div>
+<!-- LEADERBOARD-ROBOCASA:END -->
+
+        <h3 class="board-title">LIBERO &middot; mean over four suites</h3>
+        <!-- LEADERBOARD-LIBERO:START -->
+<div class="table-block">
+<table>
+<thead><tr>
+<th>#</th>
+<th>Model</th>
+<th>Train</th>
+<th>Safety &uarr;</th>
+<th>SR &uarr;</th>
+<th>SBU &darr;</th>
+<th>VSI &darr;</th>
+<th>Episodes</th>
+</tr></thead>
+<tbody>
+<tr><td class="rank">&#129351;</td><td>&pi;-RL-130</td><td>RL</td><td class="lead">82.0%</td><td>92.4%<span class="sr-rank">#4 by SR</span></td><td>15.9%</td><td>0.073</td><td class="dim">8,000</td></tr>
+<tr><td class="rank">&#129352;</td><td>Cosmos-Policy-2B</td><td>SFT</td><td class="lead">82.0%</td><td>95.2%<span class="sr-rank">#2 by SR</span></td><td>16.6%</td><td>0.084</td><td class="dim">800</td></tr>
+<tr><td class="rank">&#129353;</td><td>&pi;<sub>0.5</sub></td><td>SFT</td><td class="lead">80.8%</td><td>96.6%<span class="sr-rank">#1 by SR</span></td><td>18.4%</td><td>0.086</td><td class="dim">800</td></tr>
+<tr><td class="rank">4</td><td>OpenVLA-7B</td><td>SFT</td><td class="lead">80.6%</td><td>69.4%<span class="sr-rank">#5 by SR</span></td><td>8.5%</td><td>0.125</td><td class="dim">800</td></tr>
+<tr><td class="rank">5</td><td>GR00T-N1.7</td><td>SFT</td><td class="lead">79.1%</td><td>94.2%<span class="sr-rank">#3 by SR</span></td><td>17.8%</td><td>0.093</td><td class="dim">800</td></tr>
+</tbody>
+</table>
+</div>
+<p class="table-note">5 LIBERO and 6 RoboCasa-365 entries over 16,600 episodes, ranked on unrounded Safety (displayed values are rounded, so rows can tie on screen without tying in the ordering). LIBERO episode counts differ by policy: SFT rows run 200 rollouts per suite, &pi;-RL-130 runs 2,000. Updated 2026-09-19.</p>
+<!-- LEADERBOARD-LIBERO:END -->
+      </div>
+    </section>
+
+    <section class="section-block light" id="about">
+      <div class="section-inner">
+        <div class="metrics-grid">
+          <article class="result-panel">
+            <h3>What is scored</h3>
+            <p>
+              RoboCasa-365 atomic-seen covers 18 kitchen task families at 50 episodes each; LIBERO
+              covers four tabletop suites. Policies run through their native inference wrappers with
+              fixed seeds, so the success rate reported here is the one the policy's own harness
+              produces &mdash; we add the safety layer on top rather than re-implementing the task.
+            </p>
+          </article>
+          <article class="result-panel">
+            <h3>The four numbers</h3>
+            <p>
+              <strong>SR</strong> is the benchmark's native success rate. <strong>Safety</strong> is
+              the fraction of all episodes satisfying every applicable STL specification.
+              <strong>SBU</strong> (Succ-But-Unsafe) is the fraction of episodes that both succeed
+              and violate &mdash; the failures an SR-only evaluation cannot see.
+              <strong>VSI</strong> is a bounded worst-violation depth, so a policy can have few
+              unsafe successes and still score badly when the violations it does commit are severe.
+            </p>
+          </article>
+          <article class="result-panel">
+            <h3>Submitting a result</h3>
+            <p>
+              Open a pull request against
+              <a href="https://github.com/JFan5/SafeVLA-Bench-release">SafeVLA-Bench-release</a>
+              adding one JSON file under <code>submissions/</code> with your policy name, the
+              benchmark and suite, episode count, and the per-episode verdict file produced by
+              <code>scripts/compute_stl_robustness.py</code>. We re-score from the raw trajectories
+              rather than taking reported numbers, so please include the per-step logs or a link to
+              them. Entries currently on this board were all evaluated by us.
+            </p>
+          </article>
+        </div>
+
+        <p class="table-note">
+          Scores come from the same aggregate the paper reads, regenerated by
+          <code>scripts/make_leaderboard.py</code>. RoboCasa-365 verdicts were recomputed from the
+          per-step force traces in September 2026; earlier numbers derived from the action log alone
+          understated contact violations. See the
+          <a href="https://arxiv.org/abs/2606.00773">paper</a> for the specification library and
+          threshold sensitivity analysis.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>SafeVLA-Bench</span>
+    <span>A Benchmark for the Success-Safety Gap in Vision-Language-Action Models</span>
+  </footer>
+
+  <script src="static/js/index.js?v=20260602-constraints-copy"></script>
+
+  <!-- GoatCounter: privacy-friendly, cookieless analytics -->
+  <script data-goatcounter="https://jialiangfan.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
