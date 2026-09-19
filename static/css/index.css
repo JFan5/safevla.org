@@ -734,6 +734,16 @@ td:nth-child(2) {
   font-weight: 600;
 }
 
+td a {
+  border-bottom: 1px solid var(--line-strong);
+  color: inherit;
+  text-decoration: none;
+}
+
+td a:hover {
+  border-bottom-color: var(--ink);
+}
+
 td.rank {
   color: var(--muted);
   font-family: var(--mono);
