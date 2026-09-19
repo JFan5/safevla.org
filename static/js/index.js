@@ -44,3 +44,11 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
     }, 1600);
   });
 });
+
+// Safety column: draw a proportional bar behind the value.
+document.querySelectorAll("td.lead").forEach((cell) => {
+  const pct = parseFloat(cell.textContent);
+  if (!Number.isNaN(pct)) {
+    cell.style.setProperty("--w", `${pct}%`);
+  }
+});

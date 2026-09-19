@@ -35,7 +35,7 @@
       <a href="#overview">Overview</a>
       <a href="#method">Method</a>
       <a href="#results">Results</a>
-      <a href="leaderboard.html">Leaderboard</a>
+      <a href="#leaderboard">Leaderboard</a>
       <a href="#citation">Citation</a>
     </div>
   </nav>
@@ -224,6 +224,19 @@
           <img src="static/images/diagnostic_combo_paper.png?v=20260919" alt="Diagnostic figure comparing success, safety, and violation types across evaluated model cells">
         </div>
 
+      </div>
+    </section>
+
+    <section id="leaderboard" class="section-block dark">
+      <div class="section-inner">
+        <div class="section-heading compact">
+          <p class="section-kicker">Leaderboard</p>
+          <h2>Ranked by safety, not by success.</h2>
+          <p>
+            Every entry is scored on the same rollouts with two questions: did the policy finish the task, and did it get there safely. The label under each SR shows where that policy would place on a success-only board; the two orders do not agree.
+          </p>
+        </div>
+
         <div class="home-boards">
           <div>
             <h3 class="board-title">LIBERO Aggregate</h3>
@@ -278,7 +291,7 @@
         </div>
         <p class="table-note">
           Full ranking, metric definitions and submission instructions on the
-          <a href="leaderboard.html">leaderboard</a>.
+          <a href="leaderboard.html">leaderboard page</a>.
         </p>
       </div>
     </section>
@@ -353,7 +366,7 @@
     </span>
   </footer>
 
-  <script src="static/js/index.js?v=20260602-constraints-copy"></script>
+  <script src="static/js/index.js?v=20260919-safety-bar"></script>
 
   <!-- GoatCounter: privacy-friendly, cookieless analytics -->
   <script data-goatcounter="https://jialiangfan.goatcounter.com/count"
