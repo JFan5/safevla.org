@@ -191,7 +191,7 @@ button:focus-visible {
 .hero-content {
   margin: 0 auto;
   max-width: var(--max);
-  padding: 56px 28px 40px;
+  padding: 36px 28px 36px;
 }
 
 .hero-content.compact {
