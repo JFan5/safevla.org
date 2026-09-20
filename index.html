@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="SafeVLA-Bench">
   <meta property="og:description" content="A Benchmark for the Success-Safety Gap in Vision-Language-Action Models.">
-  <meta property="og:image" content="https://safevla.org/static/images/sbu_teaser_chart.png?v=20260919">
+  <meta property="og:image" content="https://safevla.org/static/images/sbu_teaser_chart.png?v=20260920">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://safevla.org/">
   <meta name="citation_title" content="SafeVLA-Bench: A Benchmark for the Success-Safety Gap in Vision-Language-Action Models">
@@ -15,7 +15,7 @@
   <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2606.00773">
   <title>SafeVLA-Bench</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310231f'/%3E%3Cpath d='M18 33l8 8 17-20' fill='none' stroke='%23f4f1e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="static/css/index.css?v=20260920-plainfont3">
+  <link rel="stylesheet" href="static/css/index.css?v=20260920-figs">
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -313,7 +313,7 @@
         </div>
 
         <div class="figure-wrap">
-          <img src="static/images/sbu_teaser_chart.png?v=20260919" alt="SafeVLA-Bench teaser chart showing success-safety gaps and SBU metrics">
+          <img src="static/images/sbu_teaser_chart.png?v=20260920" alt="SafeVLA-Bench teaser chart showing success-safety gaps and SBU metrics">
         </div>
 
         <div class="result-panels">
@@ -323,7 +323,7 @@
           </article>
           <article class="result-panel">
             <h3>RoboCasa-365</h3>
-            <p>Across four policies, 38-56% of native successes violate at least one active safety clause, showing that unsafe success is systematic.</p>
+            <p>Across all six policies, 38-56% of native successes violate at least one active safety clause, showing that unsafe success is systematic.</p>
           </article>
           <article class="result-panel">
             <h3>Severity</h3>
@@ -332,7 +332,14 @@
         </div>
 
         <div class="figure-wrap">
-          <img src="static/images/diagnostic_combo_paper.png?v=20260919" alt="Diagnostic figure comparing success, safety, and violation types across evaluated model cells">
+          <img src="static/images/diagnostic_combo_paper.png?v=20260920" alt="Diagnostic figure comparing success, safety, and violation types across evaluated model cells">
+          <p class="figure-note">
+            Outcome composition and violation families come from the four-policy
+            diagnostic roster on RoboCasa-365 (&pi;<sub>0</sub>,
+            &pi;<sub>0.5</sub>, GR00T-N1.5, RLDX-1-FT-RC365), which is the subset
+            with per-step traces reconstructed. PRTS and Xiaomi-Robotics-1 are on
+            the leaderboard above but not in this figure.
+          </p>
         </div>
 
       </div>

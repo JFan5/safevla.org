@@ -398,6 +398,14 @@ h3 {
   margin-top: 18px;
 }
 
+.figure-note {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin: 12px 0 0;
+  max-width: 78ch;
+}
+
 .section-heading {
   max-width: 820px;
 }
