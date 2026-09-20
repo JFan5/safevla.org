@@ -645,7 +645,24 @@ h3 {
 .home-boards {
   display: grid;
   gap: 28px;
-  margin-top: 44px;
+}
+
+/* Home leaderboard: sits right under the title, so keep its header short. */
+#leaderboard {
+  padding-top: 40px;
+}
+
+#leaderboard h2 {
+  font-size: 1.75rem;
+}
+
+#leaderboard .section-heading {
+  margin-bottom: 24px;
+}
+
+#leaderboard .section-heading p:not(.section-kicker) {
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
 
 .board-title {
