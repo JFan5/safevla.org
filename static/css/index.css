@@ -313,7 +313,7 @@ h1 em {
 .hero-below {
   margin: 0 auto;
   max-width: var(--max);
-  padding: 0 28px 80px;
+  padding: 72px 28px 24px;
 }
 
 .hero-diagram {
@@ -1050,7 +1050,7 @@ td.dim {
   }
 
   .hero-below {
-    padding: 0 20px 56px;
+    padding: 48px 20px 16px;
   }
 
   .hero-copy {
