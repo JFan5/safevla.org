@@ -645,12 +645,12 @@ h3 {
 .home-boards {
   display: grid;
   gap: 28px;
-  margin-top: 32px;
+  margin-top: 26px;
 }
 
 /* Home leaderboard: sits right under the title, so keep its header short. */
 #leaderboard {
-  padding-top: 40px;
+  padding-top: 28px;
 }
 
 #leaderboard h2 {
@@ -658,12 +658,16 @@ h3 {
 }
 
 #leaderboard .section-heading {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 #leaderboard .section-heading p:not(.section-kicker) {
   font-size: 0.95rem;
-  margin-top: 10px;
+  margin-top: 8px;
+}
+
+#leaderboard .section-kicker {
+  margin-bottom: 12px;
 }
 
 .hero-copy strong {
@@ -678,12 +682,12 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  padding: 18px 0 20px;
+  padding: 14px 0 15px;
 }
 
 .board-stats div {
-  flex: 1 1 140px;
-  padding: 0 24px;
+  flex: 1 1 130px;
+  padding: 0 22px;
 }
 
 .board-stats div + div {
@@ -697,7 +701,7 @@ h3 {
 .board-stats dt {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
@@ -705,19 +709,19 @@ h3 {
 .board-stats dd {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.1em;
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   text-transform: uppercase;
 }
 
-.board-updated {
+/* The date reads as a label, not a measurement. */
+.board-stats div:last-child dt {
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  margin: 12px 0 0;
-  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0;
+  padding-top: 0.42rem;
 }
 
 .board-title {
@@ -751,12 +755,12 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  padding: 18px 0 20px;
+  padding: 14px 0 15px;
 }
 
 .board-stats div {
-  flex: 1 1 140px;
-  padding: 0 24px;
+  flex: 1 1 130px;
+  padding: 0 22px;
 }
 
 .board-stats div + div {
@@ -770,7 +774,7 @@ h3 {
 .board-stats dt {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
@@ -778,19 +782,19 @@ h3 {
 .board-stats dd {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.1em;
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   text-transform: uppercase;
 }
 
-.board-updated {
+/* The date reads as a label, not a measurement. */
+.board-stats div:last-child dt {
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  margin: 12px 0 0;
-  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0;
+  padding-top: 0.42rem;
 }
 
 .board-title {
