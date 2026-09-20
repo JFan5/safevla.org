@@ -645,6 +645,7 @@ h3 {
 .home-boards {
   display: grid;
   gap: 28px;
+  margin-top: 32px;
 }
 
 /* Home leaderboard: sits right under the title, so keep its header short. */
@@ -663,6 +664,60 @@ h3 {
 #leaderboard .section-heading p:not(.section-kicker) {
   font-size: 0.95rem;
   margin-top: 10px;
+}
+
+.hero-copy strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Coverage strip above the boards: what was evaluated, and when. */
+.board-stats {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 18px 0 20px;
+}
+
+.board-stats div {
+  flex: 1 1 140px;
+  padding: 0 24px;
+}
+
+.board-stats div + div {
+  border-left: 1px solid var(--line);
+}
+
+.board-stats div:first-child {
+  padding-left: 0;
+}
+
+.board-stats dt {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.board-stats dd {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  margin: 6px 0 0;
+  text-transform: uppercase;
+}
+
+.board-updated {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  margin: 12px 0 0;
+  text-transform: uppercase;
 }
 
 .board-title {
@@ -684,7 +739,61 @@ h3 {
   height: 1px;
 }
 
-.table-block + .board-title {
+.table-block + .hero-copy strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Coverage strip above the boards: what was evaluated, and when. */
+.board-stats {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 18px 0 20px;
+}
+
+.board-stats div {
+  flex: 1 1 140px;
+  padding: 0 24px;
+}
+
+.board-stats div + div {
+  border-left: 1px solid var(--line);
+}
+
+.board-stats div:first-child {
+  padding-left: 0;
+}
+
+.board-stats dt {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.board-stats dd {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  margin: 6px 0 0;
+  text-transform: uppercase;
+}
+
+.board-updated {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  margin: 12px 0 0;
+  text-transform: uppercase;
+}
+
+.board-title {
   margin-top: 40px;
 }
 

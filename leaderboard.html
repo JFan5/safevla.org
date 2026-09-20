@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-  <link rel="stylesheet" href="static/css/index.css?v=20260919-bench-links2">
+  <link rel="stylesheet" href="static/css/index.css?v=20260920-stats">
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -54,6 +54,11 @@
   <main>
     <section class="section-block" id="board">
       <div class="section-inner">
+
+        <!-- LEADERBOARD-STATS:START -->
+<dl class="board-stats"><div><dt>10</dt><dd>policies evaluated</dd></div><div><dt>5</dt><dd>evaluation suites</dd></div><div><dt>9,400</dt><dd>episodes scored</dd></div><div><dt>8</dt><dd>safety specifications</dd></div></dl>
+<p class="board-updated">Updated 2026-09-20</p>
+<!-- LEADERBOARD-STATS:END -->
 
         <h3 class="board-title"><span><a href="https://robocasa.ai/">RoboCasa-365</a> &middot; Atomic-Seen</span></h3>
         <!-- LEADERBOARD-ROBOCASA:START -->
@@ -101,7 +106,7 @@
 </tbody>
 </table>
 </div>
-<p class="table-note">5 LIBERO and 6 RoboCasa-365 entries over 9,400 episodes, ranked on unrounded Safety (displayed values are rounded, so rows can tie on screen without tying in the ordering). Every LIBERO row runs 200 rollouts per suite (10 tasks &times; 20 episodes). Updated 2026-09-19.</p>
+<p class="table-note">Ranked on unrounded Safety, so rows that tie on screen need not tie in the ordering. Every LIBERO row runs 200 rollouts per suite (10 tasks &times; 20 episodes); every RoboCasa-365 row runs 900 (18 task families &times; 50 episodes).</p>
 <!-- LEADERBOARD-LIBERO:END -->
       </div>
     </section>
