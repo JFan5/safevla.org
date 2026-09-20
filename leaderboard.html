@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://safevla.org/leaderboard.html">
   <title>Leaderboard &middot; SafeVLA-Bench</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310231f'/%3E%3Cpath d='M18 33l8 8 17-20' fill='none' stroke='%23f4f1e8' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="static/css/index.css?v=20260920-figs">
+  <link rel="stylesheet" href="static/css/index.css?v=20260920-key2">
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -39,11 +39,11 @@
       <p class="eyebrow">Leaderboard</p>
       <h1>Ranked by <em>safety</em>, not by success.</h1>
       <p class="hero-copy">
-        Every entry is scored on the same rollouts with two questions, not one: did the policy
-        finish the task, and did it get there without excessive contact, bystander disturbance,
-        unstable object handling, or self-collision. Sorting by Safety rather than SR is
-        deliberate &mdash; the column next to it shows where each policy would place on a
-        success-only board, and the two orders do not agree.
+        <strong>Safety</strong> is the share of episodes that satisfy every safety
+        specification applicable to the task &mdash; not a success rate. Ranking by
+        it rather than by SR is the point: the note under each SR shows where that
+        policy would place on a success-only board, and the two orders do not agree.
+        The full definitions are below.
       </p>
     </div>
   </header>
@@ -51,6 +51,12 @@
   <main>
     <section class="section-block" id="board">
       <div class="section-inner">
+
+        <p class="metric-key">
+          <span><b>SR</b> &uarr; native task success</span>
+          <span><b>SBU</b> &darr; successes that still violate a spec</span>
+          <span><b>VSI</b> &darr; severity of the worst violation</span>
+        </p>
 
         <!-- LEADERBOARD-STATS:START -->
 <dl class="board-stats"><div><dt>10</dt><dd>policies evaluated</dd></div><div><dt>5</dt><dd>evaluation suites</dd></div><div><dt>9,400</dt><dd>episodes scored</dd></div><div><dt>8</dt><dd>safety specifications</dd></div><div><dt>2026-09-20</dt><dd>last updated</dd></div></dl>
@@ -63,10 +69,10 @@
 <thead><tr>
 <th>#</th>
 <th>Model</th>
-<th>Safety &uarr;</th>
-<th>SR &uarr;</th>
-<th>SBU &darr;</th>
-<th>VSI &darr;</th>
+<th><abbr title="Share of episodes that satisfy every safety specification applicable to the task. Not a success rate.">Safety &uarr;</abbr></th>
+<th><abbr title="Native success rate of the host benchmark: the share of episodes that complete the task.">SR &uarr;</abbr></th>
+<th><abbr title="Succ-But-Unsafe: episodes that complete the task while violating at least one applicable specification.">SBU &darr;</abbr></th>
+<th><abbr title="Violation Severity Index: normalized depth of the worst applicable violation, so rare but severe violations still register.">VSI &darr;</abbr></th>
 </tr></thead>
 <tbody>
 <tr><td class="rank">&#129351;</td><td><a href="https://huggingface.co/RLWRLD/RLDX-1-FT-RC365">RLDX-1-FT-RC365</a></td><td class="lead">53.0%</td><td>58.4%<span class="sr-rank">#2 by SR</span></td><td>24.1%</td><td>0.132</td></tr>
@@ -87,11 +93,11 @@
 <thead><tr>
 <th>#</th>
 <th>Model</th>
-<th>Train</th>
-<th>Safety &uarr;</th>
-<th>SR &uarr;</th>
-<th>SBU &darr;</th>
-<th>VSI &darr;</th>
+<th><abbr title="How the released checkpoint was produced: supervised fine-tuning or reinforcement learning.">Train</abbr></th>
+<th><abbr title="Share of episodes that satisfy every safety specification applicable to the task. Not a success rate.">Safety &uarr;</abbr></th>
+<th><abbr title="Native success rate of the host benchmark: the share of episodes that complete the task.">SR &uarr;</abbr></th>
+<th><abbr title="Succ-But-Unsafe: episodes that complete the task while violating at least one applicable specification.">SBU &darr;</abbr></th>
+<th><abbr title="Violation Severity Index: normalized depth of the worst applicable violation, so rare but severe violations still register.">VSI &darr;</abbr></th>
 </tr></thead>
 <tbody>
 <tr><td class="rank">&#129351;</td><td><a href="https://github.com/NVlabs/cosmos-policy">Cosmos-Policy-2B</a></td><td>SFT</td><td class="lead">82.0%</td><td>95.2%<span class="sr-rank">#2 by SR</span></td><td>16.6%</td><td>0.084</td></tr>

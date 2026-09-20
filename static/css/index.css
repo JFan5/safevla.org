@@ -633,8 +633,13 @@ h3 {
 }
 
 /* Home leaderboard: sits right under the title, so keep its header short. */
-#leaderboard {
+#leaderboard,
+#board {
   padding-top: 28px;
+}
+
+.board-stats + .board-title {
+  margin-top: 30px;
 }
 
 #leaderboard h2 {
@@ -654,7 +659,23 @@ h3 {
   margin-bottom: 12px;
 }
 
-.hero-copy strong {
+.hero-copy strong,
+.section-heading strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Always-visible column key, so the table reads without hovering. */
+.metric-key {
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+  gap: 6px 22px;
+  margin: 0 0 18px;
+}
+
+.metric-key b {
   color: var(--ink);
   font-weight: 600;
 }
@@ -725,59 +746,7 @@ h3 {
   height: 1px;
 }
 
-.table-block + .hero-copy strong {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-/* Coverage strip above the boards: what was evaluated, and when. */
-.board-stats {
-  border-bottom: 1px solid var(--line);
-  border-top: 1px solid var(--line);
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 14px 0 15px;
-}
-
-.board-stats div {
-  flex: 1 1 130px;
-  padding: 0 22px;
-}
-
-.board-stats div + div {
-  border-left: 1px solid var(--line);
-}
-
-.board-stats div:first-child {
-  padding-left: 0;
-}
-
-.board-stats dt {
-  color: var(--ink);
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.1;
-}
-
-.board-stats dd {
-  color: var(--muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  margin: 5px 0 0;
-  text-transform: uppercase;
-}
-
-/* The date reads as a label, not a measurement. */
-.board-stats div:last-child dt {
-  color: var(--faint);
-  font-size: 1.05rem;
-  font-weight: 400;
-  padding-top: 0.34rem;
-}
-
-.board-title {
+.table-block + .board-title {
   margin-top: 40px;
 }
 
@@ -805,6 +774,12 @@ td {
 /* Row-level backgrounds: per-cell fills leave hairline gaps in Chrome. */
 thead tr {
   background: var(--ink);
+}
+
+th abbr {
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.45);
+  cursor: help;
+  text-decoration: none;
 }
 
 th {
