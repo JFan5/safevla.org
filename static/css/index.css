@@ -19,9 +19,8 @@
   --steel-tint: #e9f0f8;
   --green: #3e8e55;
   --green-tint: #e8f4ec;
-  --serif: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif;
-  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   --radius: 10px;
   --max: 1160px;
   --shadow-sm: 0 12px 32px -18px rgba(13, 21, 36, 0.25);
@@ -200,41 +199,24 @@ button:focus-visible {
 
 .eyebrow,
 .section-kicker {
-  color: var(--vermilion);
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  margin: 0 0 20px;
+  color: var(--faint);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
   text-transform: uppercase;
 }
 
-.eyebrow::before,
-.section-kicker::before {
-  background: currentColor;
-  content: "";
-  display: inline-block;
-  height: 1px;
-  margin-right: 12px;
-  vertical-align: middle;
-  width: 26px;
-}
-
-.hero-content .eyebrow {
-  color: var(--muted);
-}
-
 h1 {
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.3vw, 2rem);
-  font-weight: 400;
-  letter-spacing: -0.005em;
-  line-height: 1.2;
+  font-size: clamp(1.3rem, 1.85vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
   margin: 0 auto;
 }
 
 h1 em {
-  font-style: italic;
+  font-style: normal;
 }
 
 .hero-content.compact h1 {
@@ -298,10 +280,9 @@ h1 em {
 .button-mark {
   background: rgba(255, 255, 255, 0.18);
   border-radius: 4px;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   line-height: 1;
   padding: 5px 6px;
 }
@@ -345,10 +326,10 @@ h1 em {
 
 .hero-stats dt {
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 2.8rem;
+  font-size: 1.9rem;
   font-variant-numeric: tabular-nums;
-  line-height: 1;
+  font-weight: 600;
+  line-height: 1.1;
 }
 
 .hero-stats dd {
@@ -386,11 +367,10 @@ h1 em {
 
 h2 {
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: clamp(2rem, 3.4vw, 2.9rem);
-  font-weight: 400;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: 1.08;
+  line-height: 1.25;
 }
 
 h3 {
@@ -483,11 +463,10 @@ h3 {
   border-radius: 6px;
   color: var(--steel);
   display: inline-flex;
-  font-family: var(--mono);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   height: 34px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   margin-bottom: 20px;
   padding: 0 10px;
 }
@@ -525,17 +504,17 @@ h3 {
 }
 
 .method-step span {
-  color: var(--vermilion);
+  color: var(--faint);
   display: block;
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  font-style: italic;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   line-height: 1;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .method-step span::before {
-  content: "0";
+  content: "STEP 0";
 }
 
 .method-step p {
@@ -578,7 +557,7 @@ h3 {
 }
 
 .method-detail li::before {
-  background: var(--vermilion);
+  background: var(--line-strong);
   content: "";
   height: 1px;
   left: 0;
@@ -620,15 +599,12 @@ h3 {
 }
 
 .result-panels .result-panel h3::before {
-  color: var(--vermilion);
-  content: counter(panel, decimal-leading-zero);
+  color: var(--faint);
+  content: counter(panel) ".";
   counter-increment: panel;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  margin-right: 10px;
-  vertical-align: 2px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-right: 8px;
 }
 
 .result-panel a {
@@ -654,7 +630,7 @@ h3 {
 }
 
 #leaderboard h2 {
-  font-size: 1.75rem;
+  font-size: 1.45rem;
 }
 
 #leaderboard .section-heading {
@@ -700,17 +676,16 @@ h3 {
 
 .board-stats dt {
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
 
 .board-stats dd {
   color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
   margin: 5px 0 0;
   text-transform: uppercase;
 }
@@ -718,10 +693,9 @@ h3 {
 /* The date reads as a label, not a measurement. */
 .board-stats div:last-child dt {
   color: var(--faint);
-  font-family: var(--mono);
-  font-size: 1rem;
-  letter-spacing: 0;
-  padding-top: 0.42rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  padding-top: 0.34rem;
 }
 
 .board-title {
@@ -773,17 +747,16 @@ h3 {
 
 .board-stats dt {
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
 
 .board-stats dd {
   color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
   margin: 5px 0 0;
   text-transform: uppercase;
 }
@@ -791,10 +764,9 @@ h3 {
 /* The date reads as a label, not a measurement. */
 .board-stats div:last-child dt {
   color: var(--faint);
-  font-family: var(--mono);
-  font-size: 1rem;
-  letter-spacing: 0;
-  padding-top: 0.42rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  padding-top: 0.34rem;
 }
 
 .board-title {
@@ -830,13 +802,11 @@ thead tr {
 th {
   background: var(--ink);
   box-shadow: -1px 0 0 var(--ink), 1px 0 0 var(--ink); /* cover sub-pixel seams */
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  padding: 13px 16px;
-  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 12px 16px;
 }
 
 td {
@@ -882,8 +852,7 @@ td a:hover,
 
 td.rank {
   color: var(--muted);
-  font-family: var(--mono);
-  font-size: 1rem;
+  font-size: 0.92rem;
   width: 1%;
 }
 
@@ -914,10 +883,8 @@ td.dim {
 .sr-rank {
   color: var(--muted);
   display: block;
-  font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.02em;
   margin-top: 2px;
 }
 
@@ -974,12 +941,11 @@ td.dim {
 }
 
 .constraint-note span {
-  color: var(--vermilion);
+  color: var(--faint);
   display: block;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   margin-bottom: 6px;
   text-transform: uppercase;
 }
@@ -1039,7 +1005,6 @@ td.dim {
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
-  font-family: var(--sans);
   font-size: 0.8rem;
   font-weight: 600;
   min-width: 62px;
@@ -1066,8 +1031,7 @@ td.dim {
   border-top: 1px solid var(--line);
   color: var(--muted);
   display: flex;
-  font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   gap: 16px;
   justify-content: space-between;
   padding: 26px 28px;
