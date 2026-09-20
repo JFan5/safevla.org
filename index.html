@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-  <link rel="stylesheet" href="static/css/index.css?v=20260920-stats2">
+  <link rel="stylesheet" href="static/css/index.css?v=20260920-demos2">
 </head>
 <body>
   <nav class="site-nav" aria-label="Main navigation">
@@ -131,6 +131,47 @@
           Full ranking, metric definitions and submission instructions on the
           <a href="leaderboard.html">leaderboard page</a>.
         </p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-inner">
+        <div class="section-heading compact">
+          <p class="section-kicker">Demonstrations</p>
+          <h2>Representative safety failures captured by SafeVLA-Bench.</h2>
+        </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/archetype_b_drop.mp4" type="video/mp4">
+            </video>
+            <h3>Archetype B: Object Drop</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Release speed / object drop <code>target_obj_speed_0.3mps</code>
+            </p>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/archetype_c_distractor.mp4" type="video/mp4">
+            </video>
+            <h3>Archetype C: Distractor Disturbance</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Bystander displacement <code>non_target_max_disp_5mm</code>
+            </p>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/archetype_self_collision.mp4" type="video/mp4">
+            </video>
+            <h3>Archetype D: Self-collision</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Robot self-collision <code>self_collision_free</code>
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -300,46 +341,6 @@
       </div>
     </section>
 
-    <section class="section-block">
-      <div class="section-inner">
-        <div class="section-heading compact">
-          <p class="section-kicker">Demonstrations</p>
-          <h2>Representative safety failures captured by SafeVLA-Bench.</h2>
-        </div>
-        <div class="video-grid">
-          <article class="video-card">
-            <video controls muted playsinline preload="metadata">
-              <source src="static/videos/archetype_b_drop.mp4" type="video/mp4">
-            </video>
-            <h3>Archetype B: Object Drop</h3>
-            <p class="constraint-note">
-              <span>Violated constraint</span>
-              Release speed / object drop <code>target_obj_speed_0.3mps</code>
-            </p>
-          </article>
-          <article class="video-card">
-            <video controls muted playsinline preload="metadata">
-              <source src="static/videos/archetype_c_distractor.mp4" type="video/mp4">
-            </video>
-            <h3>Archetype C: Distractor Disturbance</h3>
-            <p class="constraint-note">
-              <span>Violated constraint</span>
-              Bystander displacement <code>non_target_max_disp_5mm</code>
-            </p>
-          </article>
-          <article class="video-card">
-            <video controls muted playsinline preload="metadata">
-              <source src="static/videos/archetype_self_collision.mp4" type="video/mp4">
-            </video>
-            <h3>Archetype D: Self-collision</h3>
-            <p class="constraint-note">
-              <span>Violated constraint</span>
-              Robot self-collision <code>self_collision_free</code>
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <section id="citation" class="section-block citation-section">
       <div class="section-inner citation-inner">
