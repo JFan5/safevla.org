@@ -223,6 +223,27 @@ h1 em {
   font-size: clamp(1.5rem, 2.3vw, 2rem);
 }
 
+.hero-authors {
+  font-size: 1rem;
+  margin-top: 14px;
+}
+
+.hero-authors p {
+  margin: 0;
+}
+
+.hero-authors a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.hero-authors .hero-affil {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
 .hero-copy {
   color: var(--muted);
   font-size: 1rem;
