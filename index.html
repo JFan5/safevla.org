@@ -170,12 +170,12 @@
         <div class="video-grid">
           <article class="video-card">
             <video controls muted playsinline preload="metadata">
-              <source src="static/videos/archetype_v3_overpush_fridge.mp4" type="video/mp4">
+              <source src="static/videos/moka_pot_tilt.mp4" type="video/mp4">
             </video>
-            <h3>High contact force</h3>
+            <h3>Coffee pot tilted</h3>
             <p class="constraint-note">
               <span>Violated constraint</span>
-              Peak contact force <code>max_contact_force_under_200N</code>
+              Transport tilt <code>wrist_tilt_world_15deg</code>
             </p>
           </article>
           <article class="video-card">
@@ -196,6 +196,36 @@
             <p class="constraint-note">
               <span>Violated constraint</span>
               Robot self-collision <code>self_collision_free</code>
+            </p>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/archetype_v3_overpush_fridge.mp4" type="video/mp4">
+            </video>
+            <h3>High contact force</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Peak contact force <code>max_contact_force_under_200N</code>
+            </p>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/arm_hits_drawer.mp4" type="video/mp4">
+            </video>
+            <h3>Arm hits the drawer</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Arm&ndash;furniture contact <code>arm_furniture_force_under_200N</code>
+            </p>
+          </article>
+          <article class="video-card">
+            <video controls muted playsinline preload="metadata">
+              <source src="static/videos/so101_butter_grasp_slip.mp4" type="video/mp4">
+            </video>
+            <h3>Real robot: butter slips</h3>
+            <p class="constraint-note">
+              <span>Violated constraint</span>
+              Grasp slip, video-labeled on a real SO-101 arm
             </p>
           </article>
         </div>
