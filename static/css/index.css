@@ -244,6 +244,11 @@ h1 em {
   margin-top: 4px;
 }
 
+.hero-authors .hero-affil strong {
+  color: var(--text);
+  font-size: 1.15rem;
+}
+
 .hero-copy {
   color: var(--muted);
   font-size: 1rem;
