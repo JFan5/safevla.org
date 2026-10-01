@@ -238,6 +238,10 @@ h1 em {
   white-space: nowrap;
 }
 
+.hero-authors p:first-child a {
+  text-decoration: none;
+}
+
 .hero-authors .hero-affil {
   color: var(--muted);
   font-size: 0.9rem;
